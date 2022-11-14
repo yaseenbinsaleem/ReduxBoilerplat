@@ -13,7 +13,7 @@ const initialState = {
   Products: [],
   fetchingAccounts: false,
 };
-//initialstate ma saare variable ko define karte hain or neeche use karte hain i.e line 27
+//initialstate ma saare variable ko define karte hain or neeche use karte hain i.e line 29
 
 export const GetProducts = createAsyncThunk("GetProducts", async () => {
   //createAsyncThunk karenge jiske pehle param mai uska name(same as variable i.e GetProducts)..
@@ -25,7 +25,7 @@ export const GetProducts = createAsyncThunk("GetProducts", async () => {
 
 const productsReducer = createSlice({
   name: "product",
-  //is product mai saare Thunks bhej denge i.e GetProducts
+  //is product mai saare Thunks bhej denge i.e GetProducts (reducers)
   initialState,
   reducers: {},
   extraReducers: {
@@ -46,11 +46,13 @@ export default productsReducer.reducer;
 
 //------------------REDUCER FILE END-------------------------
 
+
+
 //------------------FETCH FILE START-------------------------
 
 export const getRequest = async (api, get) => {
     const res = await fetch(api, {
-      //fetch mai 2 params api or method jata hai
+      //fetch mai 2 params api aur method jata hai
       method: "GET",
       headers: {
         //   Authorization: localStorage.getItem('token'),
@@ -60,7 +62,7 @@ export const getRequest = async (api, get) => {
     });
     return await res.json();
   };
-  //getRequest k params mai api or get recieve horaha hai, get=(method mai use horaha hai usse pata lagta hai k kia method perform karna hai)
+  //getRequest k params mai (api aur get) recieve horaha hai, get=(method mai use horaha hai usse pata lagta hai k kia method perform karna hai)
   
   //RIGHT WAY TO DO IT IS TO GET SECOND PARAM AS type AND USE TO PERFORM METHOD FOR EXAMPLE:
   export const Request = async (api, type) => {
@@ -70,8 +72,10 @@ export const getRequest = async (api, get) => {
     });
     return await res.json();
   };
-  //is tarha mai request method manwaunga or 2 params (api aur type i.e get,post,put) bhejdunga or wo perform hojaega or hume postRequest,GetRequest etc banane ki zaroorat nhi
+  //request func or 2 params (api aur type i.e get,post,put) wo type perform hojaega or hume postRequest,GetRequest etc banane ki zaroorat nhi
 //------------------FETCH FILE END-------------------------
+
+
 
 //------------------HOME FILE START-------------------------
 import React, { useEffect, useState } from "react";
@@ -88,7 +92,7 @@ function Home() {
   useEffect(() => {
     dispatch(GetProducts());
   }, []);
-  //useDispatch aur useSelector important hain useSelector store ko access karne k liye use karenge or dispatch send karne k liye jese yaha pe..
+//useDispatch aur useSelector important hain,useSelector store ko access karne k liye use karenge or dispatch send karne k liye jese yaha pe..
 //.. GetProducts func dispatch kar rahe hain taake ye function chal jae or is case mai api hit hojae jo product file ka thunk mai horha hai..
 //.. or useSelector se hum product ko access kar rhe jo hum waha Slice se bhej rhe hai (jisme value hum yaha dispatch se bhej rhe hain)
 
@@ -130,6 +134,11 @@ function Home() {
 export default Home;
 //------------------HOME FILE END-------------------------
 
+
+
+
+
+
 //------------------MAIN INDEX FILE START-------------------------
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -147,6 +156,11 @@ root.render(
 );
 
 //------------------MAIN INDEX FILE END-------------------------
+
+
+
+
+
 
 
 //------------------STORE FILE START-------------------------
